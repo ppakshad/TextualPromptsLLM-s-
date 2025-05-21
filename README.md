@@ -6,7 +6,7 @@ This repository presents a lightweight, structure-agnostic framework to evaluate
 
 ## System Architecture
 
-![architecture](architecture.png)
+![architecture](photo_5866124925276900285_y.jpg)
 
 The proposed system consists of two main phases:
 
