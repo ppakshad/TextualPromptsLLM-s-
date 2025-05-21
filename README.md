@@ -28,7 +28,7 @@ The proposed system consists of two main phases:
 
 ---
 
-## 🤖 Evaluated LLMs
+## Evaluated LLMs
 
 The following Large Language Models were tested using our prompt-based vulnerability detection pipeline. Each model received identical prompts and code samples, and their accuracy was measured without any structural code input (e.g., no AST, CFG, or DFG):
 
@@ -41,10 +41,29 @@ The following Large Language Models were tested using our prompt-based vulnerabi
 | **GPT-3.5**               | OpenAI                              | Proprietary    | 37%          |
 | **Llama-3-8B**            | Nvidia                              | Open-source    | 27%          |
 
-> ✅ All models were evaluated under identical zero-shot conditions using OpenAI-compatible or public APIs.
+> All models were evaluated under identical zero-shot conditions using OpenAI-compatible or public APIs.
 
 These results demonstrate that while LLMs can detect basic vulnerability patterns via textual reasoning alone, their accuracy remains limited without access to structural program representations.
 
+
+---
+
+## Prompt Design
+To support accurate detection via natural language prompts, we developed six distinct prompt templates, each focusing on a common vulnerability type found in C/C++ code. These prompts contain a set of positive and negative examples to guide the model in binary classification (vulnerable: 1, non-vulnerable: 0):
+
+Buffer Overflow: Identifies unsafe memory operations (e.g., strcpy, gets) versus secure patterns (e.g., strncpy, snprintf).
+
+Use-After-Free: Flags cases where freed memory is accessed or modified after deallocation.
+
+Integer Overflow: Detects arithmetic overflows, especially in memory allocations and multiplications.
+
+Format String Vulnerability: Highlights insecure usage of uncontrolled format strings in functions like printf and fprintf.
+
+Command Injection: Detects unsafe usage of system commands constructed from user input (e.g., system, execl).
+
+Denial of Service (DoS/DDoS): Focuses on patterns that may lead to resource exhaustion, such as infinite loops, large unchecked allocations, or unbounded recursion.
+
+These prompt designs help simulate expert vulnerability reasoning and assess the model’s robustness in identifying flaws in source code without access to intermediate representations.
 
 
 ---
