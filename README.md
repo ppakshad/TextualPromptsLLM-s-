@@ -41,7 +41,6 @@ The following Large Language Models were tested using our prompt-based vulnerabi
 | **GPT-3.5**               | OpenAI                              | Proprietary    | 37%          |
 | **Llama-3-8B**            | Nvidia                              | Open-source    | 27%          |
 
-> All models were evaluated under identical zero-shot conditions using OpenAI-compatible or public APIs.
 
 These results demonstrate that while LLMs can detect basic vulnerability patterns via textual reasoning alone, their accuracy remains limited without access to structural program representations.
 
@@ -64,27 +63,4 @@ Command Injection: Detects unsafe usage of system commands constructed from user
 Denial of Service (DoS/DDoS): Focuses on patterns that may lead to resource exhaustion, such as infinite loops, large unchecked allocations, or unbounded recursion.
 
 These prompt designs help simulate expert vulnerability reasoning and assess the model’s robustness in identifying flaws in source code without access to intermediate representations.
-
-
----
-
----
-
-## How to Run
-
-1. Install dependencies:
-
-```bash pip install openai tqdm```
-
-2. Add your OpenAI API key to the script (if using gpt-4-turbo):
-   
-```API_KEY = "sk-..."  # Add your key in dataEvaluator.py```
-
-3. Place preprocessed JSON dataset(s) inside the output_jsons/ directory
-
-
-4. Run the evaluator:
-
- ```python dataEvaluator.py ```
-
 
