@@ -28,6 +28,27 @@ The proposed system consists of two main phases:
 
 ---
 
+## 🤖 Evaluated LLMs
+
+The following Large Language Models were tested using our prompt-based vulnerability detection pipeline. Each model received identical prompts and code samples, and their accuracy was measured without any structural code input (e.g., no AST, CFG, or DFG):
+
+| Model                     | Developer                           | License        | Accuracy (%) |
+|---------------------------|-------------------------------------|----------------|--------------|
+| **GPT-4o**                | OpenAI                              | Proprietary    | 43%          |
+| **Falcon-180B-Chat**      | Technology Innovation Institute (TII) | Apache 2.0     | 42%          |
+| **GEMINI-pro 1.0**        | Google Research                     | Proprietary    | 40%          |
+| **Mistral-7B-Instruct-v0.2** | Mistral AI                        | Apache 2.0     | 38%          |
+| **GPT-3.5**               | OpenAI                              | Proprietary    | 37%          |
+| **Llama-3-8B**            | Nvidia                              | Open-source    | 27%          |
+
+> ✅ All models were evaluated under identical zero-shot conditions using OpenAI-compatible or public APIs.
+
+These results demonstrate that while LLMs can detect basic vulnerability patterns via textual reasoning alone, their accuracy remains limited without access to structural program representations.
+
+
+
+---
+
 ---
 
 ## How to Run
